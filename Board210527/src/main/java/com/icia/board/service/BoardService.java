@@ -39,6 +39,33 @@ public class BoardService {
 		return mav;
 	}
 
+	public ModelAndView boardView(int bnumber) {
+		mav= new ModelAndView();
+		//1. 해당 글의 조회수 값 1증가(update 쿼리)
+		//2.해당 글의 내용 가져오기(select 쿼리)
+		bdao.boardHits(bnumber);
+		
+		BoardDTO board = bdao.boardView(bnumber);
+		mav.addObject("board",board);
+		mav.setViewName("boardview");
+		return mav;
+	}
+
+	public ModelAndView update(int bnumber) {
+		mav= new ModelAndView();
+		BoardDTO boardUpdate =bdao.update(bnumber);
+		mav.addObject("boardUpdate",boardUpdate);
+		mav.setViewName("boardUpdate");
+		return mav;
+	}
+
+	public ModelAndView updateProcess(BoardDTO board) {
+		
+		return null;
+	}
+
+	
+
 	
 	
 

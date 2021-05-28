@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.icia.board.dto.BoardDTO;
@@ -28,14 +29,29 @@ public class BoardController {
 		mav = bs.boardWrite(board);
 		return mav;
 	}
-	
+	//글목록
 	@RequestMapping(value="/boardlist")
 	public ModelAndView boardList() {
 		mav = bs.boardList();
 		return mav;
 	}
+	//글조회
+	@RequestMapping(value="/boardview")
+	public ModelAndView boardView(@RequestParam("bnumber")int bnumber) {
+		mav=bs.boardView(bnumber);
+		return mav;
+	}
 	
-	
-	
-	
+	//수정 요청 메소드
+	@RequestMapping(value="/boardupdate")
+	public ModelAndView update(@RequestParam("bnumber")int bnumber) {
+		mav=bs.update(bnumber);
+		return mav;
+	}
+	//수정
+	@RequestMapping(value="/updateprocess")
+	public ModelAndView updateProcess(@ModelAttribute BoardDTO board) {
+		mav=bs.updateProcess(board);
+		return mav;
+	}
 }

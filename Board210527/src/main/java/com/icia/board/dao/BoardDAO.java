@@ -21,6 +21,23 @@ public class BoardDAO {
 		return sql.selectList("bd.boardlist");
 		
 	}
+
+	public void boardHits(int bnumber) {
+		sql.update("bd.boardhits",bnumber);
+	}
+	
+	public BoardDTO boardView(int bnumber) {
+		return sql.selectOne("bd.boardview",bnumber);
+	}
+
+	public BoardDTO update(int bnumber) {
+		return sql.selectOne("bd.boardupdate",bnumber);
+	}
+		
+
+	
+	
+
 	
 	
 }
