@@ -1,5 +1,7 @@
 package com.icia.board.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,7 +30,14 @@ public class BoardController {
 	public ModelAndView boardWrite(@ModelAttribute BoardDTO board) {
 		mav = bs.boardWrite(board);
 		return mav;
+	}	
+	//파일첨부 글쓰기
+	@RequestMapping(value="/boardwritefile")
+	public ModelAndView boardWriteFile(@ModelAttribute BoardDTO board) throws IllegalStateException, IOException {
+		mav = bs.boardWriteFile(board);
+		return mav;
 	}
+	
 	//글목록
 	@RequestMapping(value="/boardlist")
 	public ModelAndView boardList() {
@@ -38,20 +47,26 @@ public class BoardController {
 	//글조회
 	@RequestMapping(value="/boardview")
 	public ModelAndView boardView(@RequestParam("bnumber")int bnumber) {
-		mav=bs.boardView(bnumber);
+		mav = bs.boardView(bnumber);
 		return mav;
 	}
 	
-	//수정 요청 메소드
+	//수정화면 요청
 	@RequestMapping(value="/boardupdate")
-	public ModelAndView update(@RequestParam("bnumber")int bnumber) {
-		mav=bs.update(bnumber);
+	public ModelAndView boardUpdate(@RequestParam("bnumber")int bnumber) {
+		mav = bs.boardUpdate(bnumber);
 		return mav;
 	}
-	//수정
+	//수정처리
 	@RequestMapping(value="/updateprocess")
 	public ModelAndView updateProcess(@ModelAttribute BoardDTO board) {
-		mav=bs.updateProcess(board);
+		mav = bs.updateProcess(board);
+		return mav;
+	}
+	//삭제처리
+	@RequestMapping(value="/boarddelete")
+	public ModelAndView boardDelete(@RequestParam("bnumber")int bnumber) {
+		mav = bs.boardDelete(bnumber);
 		return mav;
 	}
 }
