@@ -10,9 +10,12 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-<h2>home.jsp</h2>
 <a href ="writepage">글쓰기화면</a><br>
 <!--목록 링크를 클릭하면 단순히 boardlist.jsp로 이동하는 것이 아니라 DB에서 데이터를 가져와서 boardlist.jsp에 출력  -->
+<h2>home.jsp</h2>
 <a href ="boardlist">글목록</a><br>
+
+<!-- 페이징 처리-->
+<a href="paging">페이징처리목록</a>
 </body>
 </html>

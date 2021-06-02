@@ -16,6 +16,18 @@
 </head>
 <body>
 	<h2>boardlist.jsp</h2>
+	
+	<!--검색창 만들기  -->
+	<form action="search" method="get">
+		<select name="searchtype">
+			<option value="btitle">제목</option>
+			<option value="bwriter">작성자</option>
+		</select>
+		<input type="text" name="keyword" placeholder="검색어입력">
+		<input type="submit" value="검색">
+	</form>
+	
+	
 	<table>
 	<tr style=color:red;>
 		<th>글번호</th>
@@ -40,6 +52,7 @@
 	</table>
 	<a href="./">홈으로</a><br>
 	<a href="writepage">글쓰기화면</a>
+	
 	
 	
 </body>

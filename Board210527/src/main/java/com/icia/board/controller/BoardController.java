@@ -46,8 +46,9 @@ public class BoardController {
 	}
 	//글조회
 	@RequestMapping(value="/boardview")
-	public ModelAndView boardView(@RequestParam("bnumber")int bnumber) {
-		mav = bs.boardView(bnumber);
+	public ModelAndView boardView(@RequestParam("bnumber")int bnumber,
+			@RequestParam(value="page", required=false, defaultValue="1") int page) {
+		mav = bs.boardView(bnumber,page);
 		return mav;
 	}
 	
@@ -67,6 +68,20 @@ public class BoardController {
 	@RequestMapping(value="/boarddelete")
 	public ModelAndView boardDelete(@RequestParam("bnumber")int bnumber) {
 		mav = bs.boardDelete(bnumber);
+		return mav;
+	}
+	//페이징처리
+	@RequestMapping(value="/paging")
+	public ModelAndView boardPaging(@RequestParam(value="page", required=false, defaultValue="1") int page) {
+		mav= bs.boardPaging(page);
+		return mav;
+	}
+	
+	//검색처리
+	@RequestMapping(value="/search")
+	public ModelAndView boardSearch(@RequestParam("searchtype") String searchType, 
+									@RequestParam("keyword") String keyword) {
+		mav = bs.boardSearch(searchType, keyword);
 		return mav;
 	}
 }
